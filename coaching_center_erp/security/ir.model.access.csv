@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coaching_student,access_coaching_student,model_coaching_student,,1,1,1,1
+access_batch_receptionist,access_batch_receptionist,model_coaching_batch,coaching_center_erp.group_receptionist,1,0,0,0
+access_batch_manager,access_batch_manager,model_coaching_batch,coaching_center_erp.group_manager,1,1,1,1
+access_batch_admin,access_batch_admin,model_coaching_batch,coaching_center_erp.group_admin,1,1,1,1
+access_coaching_fee,access_coaching_fee,model_coaching_fee,,1,1,1,1
+access_batch_update_wizard,access_batch_update_wizard,model_batch_update_wizard,,1,1,1,1
+access_coaching_tutor,acess_coaching_tutor,model_coaching_tutor,,1,1,1,1
+acess_coaching_course,acess_coaching_course,model_coaching_course,,1,1,1,1
+acess_coaching_subject,acess_coaching_subject,model_coaching_subject,,1,1,1,1
+acess_coaching_tutor_assignment,acess_coaching_tutor_assignment,model_coaching_tutor_assignment,,1,1,1,1
+acess_coaching_inquiry,acess_coaching_inquiry,model_coaching_inquiry,,1,1,1,1
+access_student_accountant,access_student_accountant,model_coaching_student,coaching_center_erp.group_accountant,1,0,0,0
+access_batch_accountant,access_batch_accountant,model_coaching_batch,coaching_center_erp.group_accountant,1,0,0,0

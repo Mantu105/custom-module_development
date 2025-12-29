@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="Coaching_erp.CoachingDashboard" owl="1">
+        <div id="root" class="vh-100 bg-muted overflow-auto">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+            <div class="w-100 shadow-sm rounded-2xl" style="border: 1px solid #ddd; margin-bottom: 3rem; border-radius: 8px;">  
+                <div class="row">
+                    <div class="col-12 d-flex flex-wrap justify-content-evenly mt-4">
+                        <div class="dashboard-card-details" 
+                            style="width: 29%; min-height: 230px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);" 
+                            t-on-click="openStudentTreeView">
+                            <div class="dashboard_card_upper" style="text-align: center; margin-bottom: 1.2rem;">
+                                <i class="bi-person" style="font-size: 2rem; color: #007bff;"></i>
+                            </div>
+                            <div class="dashboard_card_lower" style="text-align: center; margin-bottom: 1rem;">
+                                <div style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.2rem;">
+                                    Total Students
+                                </div>
+                                <div style="font-family: 'Merriweather', serif; font-weight: 600; font-size: 1.5rem; color: #333;">
+                                    <t t-esc="state.total_no_of_students"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-details"
+                            style="width: 29%; min-height: 230px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer;"
+                            t-on-click="openTutorTreeView">
+
+                            <div class="dashboard_card_upper" style="text-align: center; margin-bottom: 1.2rem;">
+                                <i class="bi-person-badge" style="font-size: 2rem; color: #007bff;"></i>
+                            </div>
+
+                            <div class="dashboard_card_lower" style="text-align: center;">
+                                <div style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.3rem;">
+                                    Total Tutors
+                                </div>
+                                <div style="font-family: 'Merriweather', serif; font-weight: 600; font-size: 1.7rem; color: #333;">
+                                    <t t-esc="state.total_no_of_tutors"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Second row -->
+                <div class="row">
+                    <div class="col-12 d-flex flex-wrap justify-content-evenly mt-4">
+                        <div class="dashboard-card-details"
+                            style="width: 29%; min-height: 230px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer;" t-on-click="openBatchTreeView">
+                            <div class="dashboard_card_upper" style="text-align: center; margin-bottom: 1.2rem;">
+                                <i class="bi bi-calendar-event" style="font-size: 2rem; color: #007bff;"></i>
+                            </div>
+                            <div class="dashboard_card_lower" style="text-align: center;">
+                                <div style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.3rem;">
+                                    Total Batches
+                                </div>
+                                <div style="font-family: 'Merriweather', serif; font-weight: 600; font-size: 1.7rem; color: #333;">
+                                    <t t-esc="state.total_no_of_batches"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-details"
+                            style="width: 29%; min-height: 230px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: default;" t-on-click="openFeeTreeView">
+                
+                            <div class="dashboard_card_upper" style="text-align: center; margin-bottom: 1.2rem;">
+                                <i class="bi-cash-coin" style="font-size: 2rem; color: #007bff;"></i>
+                            </div>
+                            <div class="dashboard_card_lower" style="text-align: center; margin-bottom: 1rem;">
+                                <div style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.3rem;">
+                                    Total Fees Paid
+                                </div>
+                                <div style="font-family: 'Merriweather', serif; font-weight: 600; font-size: 1.6rem; color: #333;">
+                                    ₹ <t t-esc="state.total_fee_amount"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card-details"
+                            style="width: 29%; min-height: 230px; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer;"
+                            t-on-click="openInquiryTreeView">
+                            
+                            <div class="dashboard_card_upper" style="text-align: center; margin-bottom: 1.2rem;">
+                                <i class="bi bi-question-circle" style="font-size: 2rem; color: #007bff;"></i>
+                            </div>
+
+                            <div class="dashboard_card_lower" style="text-align: center;">
+                                <div style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.3rem;">
+                                    Total Inquiries
+                                </div>
+                                <div style="font-family: 'Merriweather', serif; font-weight: 600; font-size: 1.7rem; color: #333;">
+                                    <t t-esc="state.total_inquiries"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="row" style="padding-left: 2.35rem;padding-right: 2.35rem;padding-top: 1rem;padding-bottom: 2rem;">
+                    <div class="col-lg-12" >
+                        <div class="card shadow-sm rounded-2xl">
+                            <div class="card-header text-white" style="background: #5a4f7f;">
+                                <h4 class="mb-0" style="color: white;">Batch-Wise Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-hover table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Batch Name</th>
+                                            <th>Total Student</th>
+                                            <th>Total Revenue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="start" t-value="(state.currentPage - 1) * state.pageSize"/>
+                                        <t t-set="end" t-value="start + state.pageSize"/>
+                                        <t t-foreach="state.batch_details.slice(start, end)" t-as="batch" t-key="batch.id">
+                                            <tr>
+                                                <td><t t-esc="batch.name"/></td>
+                                                <td><t t-esc="batch.total_students"/></td>
+                                                <td>₹ <t t-esc="batch.amount_collected"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+
+                                </table>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div>
+                                        Page <t t-esc="state.currentPage"/> of <t t-esc="Math.ceil(state.batch_details.length / state.pageSize)"/>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-primary me-2"
+                                                t-on-click="goToPreviousPage"
+                                                t-att-disabled="state.currentPage === 1">
+                                            Previous
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary"
+                                                t-on-click="goToNextPage"
+                                                t-att-disabled="state.currentPage >= Math.ceil(state.batch_details.length / state.pageSize)">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </t>
+</templates>

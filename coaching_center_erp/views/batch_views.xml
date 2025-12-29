@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_coaching_batch_form" model="ir.ui.view">
+        <field name="name">coaching.batch.form</field>
+        <field name="model">coaching.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                  <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" icon="fa-users"
+                            name="action_view_students">
+                        <field name="student_count" string="Student" widget="statinfo"/>
+                    </button>
+                  </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="course_id"/>
+                            <field name="timing"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>  
+                            <field name="end_date"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Tutor Assignments">
+                            <field name="tutor_assignment_ids" mode="list">
+                                  <list create="false" delete="false" options="{'no_open': False}" context="{'default_batch_id': id}" editable="bottom" edit="false">
+                                      <field name="tutor_id"/>
+                                      <field name="day"/>
+                                  </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_coaching_batch_list" model="ir.ui.view">
+      <field name="name">coaching.batch.list</field>
+      <field name="model">coaching.batch</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="course_id"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="timing"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_batch_mark_completed" model="ir.actions.server">
+        <field name="name">Batch Update</field>
+        <field name="model_id" ref="coaching_center_erp.model_coaching_batch"/>
+        <field name="binding_model_id" ref="coaching_center_erp.model_coaching_batch"/>
+        <field name="state">code</field>
+        <field name="binding_type">action</field> <!-- Shows in list view Action menu -->
+        <field name="code">
+            action = records.action_mark_completed()
+        </field>
+    </record>
+
+
+  <record id="action_coaching_batch" model="ir.actions.act_window">
+    <field name="name">Batches</field>
+    <field name="res_model">coaching.batch</field>
+    <field name="view_mode">list,form</field>
+  </record>
+</odoo>

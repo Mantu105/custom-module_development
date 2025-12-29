@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_coaching_inquiry_list" model="ir.ui.view">
+        <field name="name">coaching.inquiry.list</field>
+        <field name="model">coaching.inquiry</field>
+        <field name="arch" type="xml">
+            <list>
+               <field name="name"/>
+                <field name="mobile"/>
+                <field name="interested_course_id"/>
+                <field name="interested_batch_id"/>
+                <field name="inquiry_date"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_coaching_inquiry_form" model="ir.ui.view">
+        <field name="name">coaching.inquiry.form</field>
+        <field name="model">coaching.inquiry</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="inquiry_date"/>
+                            <field name="interested_course_id"/>
+                            <field name="interested_batch_id" domain="[('course_id', '=', interested_course_id)]"/>
+                        </group>    
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="inquiry_notes">
+                           <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_coaching_inquiry" model="ir.actions.act_window">
+        <field name="name">Coaching Inquiries</field>
+        <field name="res_model">coaching.inquiry</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_coaching_inquiry_list"/>
+    </record>   
+
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_coaching_tutor_assignment_list" model="ir.ui.view">
+        <field name="name">coaching.tutor.assignment.list</field>
+        <field name="model">coaching.tutor.assignment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="tutor_id"/>
+                <field name="batch_id"/>
+                <field name="day"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_coaching_tutor_assignment_form" model="ir.ui.view">
+        <field name="name">coaching.tutor.assignment.form</field>
+        <field name="model">coaching.tutor.assignment</field>
+        <field name="arch" type="xml">
+            <form>
+               <sheet>
+                    <group>
+                        <field name="tutor_id"/>
+                        <field name="batch_id"/>
+                        <field name="day"/>
+                        <field name="session_datetime"/>
+                        <field name="duration_hours"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_coaching_tutor_assignment" model="ir.actions.act_window">
+        <field name="name">Tutor Assignments</field>
+        <field name="res_model">coaching.tutor.assignment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+ 
+    <record id="view_coaching_tutor_assignment_calendar" model="ir.ui.view">
+        <field name="name">coaching.tutor.assignment.calendar</field>
+        <field name="model">coaching.tutor.assignment</field>
+        <field name="arch" type="xml">
+        <calendar string="Tutor Timetable"
+                    date_start="session_datetime"
+                    date_delay="duration_hours"
+                    mode="week"
+                    color="tutor_id"
+                    event_open_popup="true">
+            <field name="tutor_id"/>
+            <field name="batch_id"/>
+            <field name="duration_hours"/>
+        </calendar>
+        </field>
+    </record>
+
+    <record id="action_coaching_tutor_assignment_calendar" model="ir.actions.act_window">
+        <field name="name">Tutor Timetable</field>
+        <field name="res_model">coaching.tutor.assignment</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="view_coaching_tutor_assignment_calendar"/>
+        <field name="context">{}</field>
+    </record>
+</odoo>
+

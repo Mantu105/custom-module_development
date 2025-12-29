@@ -1,0 +1,77 @@
+// File: acs_website_custom_header/static/src/scss/custom_header.scss
+
+#webheader-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+
+  .navbar {
+    padding: 1rem 0;
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+
+      .logosizenav {
+       width: 101px;
+       height: auto;
+      }
+    }
+
+    .navbar-toggler {
+      border: none;
+      outline: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .navbar-collapse {
+      justify-content: flex-end;
+
+      .nav-item {
+        margin-left: 1rem;
+
+        .nav-link {
+          color: #333;
+          font-weight: 500;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #007bff;
+          }
+        }
+      }
+
+    .signinbtn {
+  margin-left: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: #0d73cf;
+  border-radius: 25px;
+  padding: 0 20px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px 1px rgba(13, 115, 207, 0.3); // Fixed the incomplete value
+
+  a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+
+    span {
+      display: inline-block;
+    }
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+  }
+}
+
+    }
+  }
+}

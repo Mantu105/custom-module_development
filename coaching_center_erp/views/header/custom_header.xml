@@ -1,0 +1,33 @@
+<!-- acs_website_custom_header/views/custom_header.xml -->
+<odoo>
+  <template id="custom_web_layout_header" inherit_id="website.layout">
+    <xpath expr="//header" position="replace">
+      <header>
+        <div id="webheader-nav">
+          <nav class="navbar navbar-light navbar-expand-lg">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img src="coaching_center_erp/static/src/img/1.png" class="logosizenav" alt="Logo"/>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="signinbtn">
+                    <a class="" href="/web/login">
+                      <span>Sign In</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </xpath>
+  </template>
+</odoo>

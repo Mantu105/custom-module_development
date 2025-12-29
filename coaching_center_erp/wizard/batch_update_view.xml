@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="view_batch_status_wizard_form" model="ir.ui.view">
+        <field name="name">batch.status.wizard.form</field>
+        <field name="model">batch.update.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change Batch Status">
+                <group>
+                    <field name="name"/>
+                </group>
+                <footer>
+                    <button name="apply_update_batch" type="object" string="Apply" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

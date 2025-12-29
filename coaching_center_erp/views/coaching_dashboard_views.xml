@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+     <record id="action_view_dashboard" model="ir.actions.client">
+            <field name="name">Dashboard</field>
+            <field name="tag">coaching_center_erp.coaching_dashboard</field>
+        </record>
+    </data>
+</odoo>

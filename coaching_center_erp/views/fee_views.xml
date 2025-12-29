@@ -1,0 +1,71 @@
+<odoo>
+  <record id="view_coaching_fee_form" model="ir.ui.view">
+    <field name="name">coaching.fee.form</field>
+    <field name="model">coaching.fee</field>
+    <field name="arch" type="xml">
+      <form string="Fee">
+        <header>
+          <field name="status" widget="statusbar" readonly="1"/>
+        </header>
+          <sheet>
+            <group>
+              <field name="student_id"/>
+              <field name="batch_id"/>
+              <field name="amount" readonly="1"/>
+              <field name="total_paid_so_far"/>
+              <field name="amount_paid"/>
+              <field name="balance" readonly="1"/>
+              <!-- <field name="status" readonly="1"/> -->
+              <field name="payment_mode"/>
+              <field name="payment_date"/>
+              <field name="notes"/>
+            </group>
+          </sheet>
+        <chatter/>  
+      </form>
+    </field>
+  </record>
+
+  <record id="view_coaching_fee_list" model="ir.ui.view">
+    <field name="name">coaching.fee.list</field>
+    <field name="model">coaching.fee</field>
+    <field name="arch" type="xml">
+      <list string="Fees">
+        <field name="payment_date"/>
+        <field name="amount"/>
+        <field name="amount_paid" sum="amount_paid"/>
+        <field name="balance"/>
+        <field name="payment_mode"/>
+        <field name="status"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_coaching_fee_search" model="ir.ui.view">
+        <field name="name">coaching.student.search</field>
+        <field name="model">coaching.fee</field>
+        <field name="arch" type="xml">
+           <search string="Search Title">
+            <field name="student_id"/>
+            <field name="batch_id"/>
+            <field name="status"/>
+            <field name="payment_mode"/>
+            <filter name="filter_paid" string="Paid" domain="[('status', '=', 'paid')]"/>
+            <filter name="filter_partial" string="Partial" domain="[('status', '=', 'partial')]"/>
+            <filter name="filter_unpaid" string="Unpaid" domain="[('status', '=', 'unpaid')]"/>
+            <group expand="0" string="Group By">
+                <filter string="Group By Student" name="group_by_student" context="{'group_by': 'student_id'}"/>
+                <filter string="Group By Batch" name="group_by_batch" context="{'group_by': 'batch_id'}"/>
+                <filter string="Payment Months" name="group_by_date" context="{'group_by': 'create_date:month'}"/>
+            </group>
+            
+        </search>
+        </field>
+    </record>
+
+  <record id="action_coaching_fee" model="ir.actions.act_window">
+    <field name="name">Fees</field>
+    <field name="res_model">coaching.fee</field>
+    <field name="view_mode">list,form</field>
+  </record>
+</odoo>

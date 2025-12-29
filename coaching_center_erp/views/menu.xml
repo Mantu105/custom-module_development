@@ -1,0 +1,15 @@
+<odoo>
+  <menuitem id="menu_coaching_root" name="Coaching Center" sequence="1"/>
+  <menuitem id="menu_student" name="Students" parent="menu_coaching_root" sequence="30" action="action_coaching_student" groups="coaching_center_erp.group_receptionist,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_tutor" name="Tutor" parent="menu_coaching_root" sequence="40" action="action_coaching_tutor" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_batch" name="Batches" parent="menu_coaching_root" sequence="50" action="action_coaching_batch" groups="coaching_center_erp.group_receptionist,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_fee" name="Fees" parent="menu_coaching_root" sequence="60" action="action_coaching_fee" groups="coaching_center_erp.group_accountant,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_coaching_config_root" name="Configuration" parent="menu_coaching_root" sequence="90" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_coaching_subject" name="Subjects" parent="menu_coaching_config_root" action="action_coaching_subject" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_coaching_class" name="Course" parent="menu_coaching_config_root" action="action_coaching_course" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_tutor_assignment" name="Tutor Assignments" parent="menu_coaching_config_root" sequence="70" action="action_coaching_tutor_assignment" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_timetable_root" name="Timetable" parent="menu_coaching_root" sequence="80" groups="coaching_center_erp.group_tutor,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_tutor_timetable" name="Tutor Timetable" parent="menu_timetable_root" action="action_coaching_tutor_assignment_calendar" sequence="1" groups="coaching_center_erp.group_tutor,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_dashboard" name="Dashbard" parent="menu_coaching_root" sequence="10" action="action_view_dashboard" groups="coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+  <menuitem id="menu_inquiry" name="Inquiries" parent="menu_coaching_root" sequence="20" action="action_coaching_inquiry" groups="coaching_center_erp.group_receptionist,coaching_center_erp.group_manager,coaching_center_erp.group_admin"/>
+</odoo>
