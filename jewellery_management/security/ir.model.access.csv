@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_jewellery_making_style,access_jewellery_making_style,model_jewellery_making_style,,1,1,1,1
+acess_jewellery_purity,access_jewellery_purity,model_jewellery_purity,,1,1,1,1
+access_gold_rate_per_day,access_gold_rate_per_day,model_gold_rate_per_day,,1,1,1,1

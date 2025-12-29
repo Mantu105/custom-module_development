@@ -1,0 +1,10 @@
+<odoo>
+  <record id="action_medicine_expiry_report_custom" model="ir.actions.report">
+    <field name="name">Medicine Expiry Report</field>
+    <field name="model">medicine.expiry.report.wizard</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">pharmacy_management_erp.medicine_expiry_template_custom</field>
+    <field name="report_file">pharmacy_management_erp.medicine_expiry_template_custom</field>
+    <field name="print_report_name">'Medicine_Expiry_Report_%s' % (object.start_date)</field>
+  </record>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+
+    <record id="view_medicine_expiry_report_wizard_form" model="ir.ui.view">
+        <field name="name">medicine.expiry.report.wizard.form</field>
+        <field name="model">medicine.expiry.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Medicine Expiry Report">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <footer>
+                    <button name="action_print_report"
+                            string="Print Report"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_medicine_expiry_report_wizard" model="ir.actions.act_window">
+        <field name="name">Medicine Expiry Report</field>
+        <field name="res_model">medicine.expiry.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

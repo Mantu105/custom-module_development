@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_inherit_jewellery" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.jewellery</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list//field[@name='product_uom_qty']" position="after">
+                <field name="purity"/>
+                <field name="jewellery_weight"/>
+                <field name="product_weight_gm"/>
+                <field name="gold_waste"/>
+                <field name="making_charge_per_gm"/>
+                <field name="labour_charges"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

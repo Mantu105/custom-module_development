@@ -1,0 +1,53 @@
+<odoo>
+  <template id="medicine_expiry_template_custom">
+    <t t-call="web.html_container">
+      <main>
+        <div class="page" style="font-family: 'Arial', sans-serif;">
+
+          <!-- Logo -->
+          <!-- <div style="text-align: left; margin-bottom: 10px;">
+            <img t-att-src="'%s/web/image/res.company/%d/logo' % (request.env['ir.config_parameter'].sudo().get_param('web.base.url'), res_company.id)"
+                 style="max-height: 80px;" />
+          </div> -->
+          <div style="text-align: left; margin-bottom: 10px;">
+                <img t-att-src="'/pharmacy_management_erp/static/img/logo.png'" style="max-height: 80px;" />
+        </div>
+
+          <!-- Company Info -->
+          <div style="border-top: 1px solid #000; margin-top: 10px; padding-top: 10px; margin-bottom: 20px;">
+            <strong style="font-size: 16px;"><t t-esc="res_company.name"/></strong><br/>
+            <t t-esc="res_company.city"/> <t t-esc="res_company.zip"/><br/>
+            <t t-esc="res_company.country_id.name"/>
+          </div>
+
+          <!-- Greeting & Title -->
+          <div style="margin-bottom: 15px;">
+            <p style="font-size: 14px;"><strong>Hello,</strong></p>
+            <p style="font-size: 16px;"><strong>List of Product which will Expire in Duration</strong></p>
+          </div>
+
+          <!-- Table -->
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="border-bottom: 1px solid #000;">
+                <th style="text-align: left; padding: 6px;">Medicine Name</th>
+                <th style="text-align: left; padding: 6px;">Available Quantity</th>
+                <th style="text-align: left; padding: 6px;">Expiry Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="docs.get_expired_medicines()" t-as="line">
+                <tr>
+                  <td style="padding: 6px;"><t t-esc="line.name"/></td>
+                  <td style="padding: 6px;"><t t-esc="line.qty_available or 0.0"/></td>
+                  <td style="padding: 6px;"><t t-esc="line.expiry_date"/></td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+
+        </div>
+      </main>
+    </t>
+  </template>
+</odoo>

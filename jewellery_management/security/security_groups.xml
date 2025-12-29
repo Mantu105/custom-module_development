@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record model="ir.module.category" id="coaching_center_erp_category">
+        <field name="name">Coaching Management</field>
+        <field name="description">Access control for Coaching Center ERP</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record model="ir.module.category" id="sub_coaching_center_erp_category">
+        <field name="name">Coaching Management</field>
+        <field name="parent_id" ref="coaching_center_erp_category"/>
+    </record>
+
+    <record id="coaching_center_erp.group_tutor" model="res.groups">
+        <field name="name">Tutor</field>
+        <field name="category_id" ref="sub_coaching_center_erp_category"/>
+        <field name="comment">Can access their timetable and assigned batches</field>
+    </record>
+
+    <record id="coaching_center_erp.group_receptionist" model="res.groups">
+        <field name="name">Receptionist</field>
+        <field name="category_id" ref="sub_coaching_center_erp_category"/>
+        <field name="comment">Handles student data entry and front-desk duties</field>
+    </record>
+
+    <record id="coaching_center_erp.group_accountant" model="res.groups">
+        <field name="name">Accountant</field>
+        <field name="category_id" ref="sub_coaching_center_erp_category"/>
+        <field name="comment">Handles student fees, invoices, and balances</field>
+    </record>
+
+    <record id="coaching_center_erp.group_manager" model="res.groups">
+        <field name="name">Coaching Manager</field>
+        <field name="category_id" ref="sub_coaching_center_erp_category"/>
+        <field name="comment">Manages tutors, students, and batches</field>
+    </record>
+
+    <record id="coaching_center_erp.group_admin" model="res.groups">
+        <field name="name">Coaching Admin</field>
+        <field name="category_id" ref="sub_coaching_center_erp_category"/>
+        <field name="comment">Full access to all coaching features</field>
+    </record>
+
+</data>
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="jewellery_making_style_view_list" model="ir.ui.view">
+        <field name="name">jewellery.making.style.view.list</field>
+        <field name="model">jewellery.making.style</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="charge_per_gram"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="jewellery_making_style_view_form" model="ir.ui.view">
+        <field name="name">jewellery.making.style.view.form</field>
+        <field name="model">jewellery.making.style</field>
+        <field name="arch" type="xml">
+            <form>
+               <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="charge_per_gram"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_making_style" model="ir.actions.act_window">
+        <field name="name">Making Style</field>
+        <field name="res_model">jewellery.making.style</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

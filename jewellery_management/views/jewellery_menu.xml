@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+    <menuitem id="menu_jewellery_root" name="Jewellery Management" sequence="5"/>
+
+    <menuitem id="menu_jewellery_product"
+              name="Product"
+              parent="menu_jewellery_root"
+              action="sale.product_template_action"
+              sequence="10" />
+
+    <menuitem id="menu_jewellery_sale"
+              name="Sale"
+              parent="menu_jewellery_root"
+              action="sale.action_quotations_with_onboarding"
+              sequence="20" />           
+
+    <menuitem id="menu_jewellery_purchase"
+              name="Purchase"
+              parent="menu_jewellery_root"
+              action="purchase.purchase_form_action"
+              sequence="30" />  
+    
+    <menuitem id="menu_jewellery_invoice"
+              name="Invoice"
+              parent="menu_jewellery_root"
+              action="account.action_move_out_invoice"
+              sequence="40" />         
+
+    <menuitem id="menu_jewellery_config" name="Configuration"
+              parent="menu_jewellery_root" sequence="50"/>
+
+    <menuitem id="menu_making_style"
+              name="Making Style"
+              parent="menu_jewellery_config"
+              action="action_making_style"
+              sequence="1"/>
+
+    <menuitem id="menu_jewellery_purity"
+              name="Jewellery Purity"
+              parent="menu_jewellery_config"
+              action="action_jewellery_purity"
+              sequence="2"/>
+
+    <menuitem id="menu_gold_rate_day"
+              name="GoldRate per Day"
+              parent="menu_jewellery_config"
+              action="action_gold_rate_day"
+              sequence="3"/>          
+
+
+   </odoo>

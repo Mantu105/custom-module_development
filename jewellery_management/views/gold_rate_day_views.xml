@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gold_rate_per_day_view_list" model="ir.ui.view">
+        <field name="name">gold.rate.per.day.view.list</field>
+        <field name="model">gold.rate.per.day</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="date"/>
+                <field name="rate"/>
+                <button name="action_update_price" string="UPDATE" type="object" class="btn-primary"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="gold_rate_per_day_view_form" model="ir.ui.view">
+        <field name="name">gold.rate.per.day.view.form</field>
+        <field name="model">gold.rate.per.day</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date"/>
+                    <field name="rate"/>
+                </group>
+                <!-- <footer>
+                    <button name="action_update_price" string="Update" type="object" class="btn-primary"/>
+                </footer> -->
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gold_rate_day" model="ir.actions.act_window">
+        <field name="name">GoldRate per Day</field>
+        <field name="res_model">gold.rate.per.day</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

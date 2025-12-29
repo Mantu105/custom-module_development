@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_view_form" model="ir.ui.view">
+        <field name="name">product.template.jewellery.form.inherit.jewellery</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@name='general_information']/group" position="inside">
+                <group string="Jewellery Specification">
+                    <field name="jewellery_purity_id"/>
+                    <field name="making_style_id"/>
+                    <field name="making_charge_per_gm"/>
+                    <field name="jewellery_weight"/>
+                    <field name="gold_waste"/>
+                    <field name="uom_id" string="Unit of Measure"/>
+                    <field name="uom_po_id" string="Purchase UoM"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

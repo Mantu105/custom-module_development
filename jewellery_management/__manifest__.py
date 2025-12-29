@@ -1,0 +1,23 @@
+{
+    'name': 'Jewellery Management',
+    'version': '18.0',
+    'category': 'Inventory',
+    'summary': 'Manage jewellery making styles and charges',
+    'depends': ['base','product','purchase','sale','account','stock'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/making_style_views.xml',
+        'views/jewellery_purity_views.xml',
+        'views/gold_rate_day_views.xml',
+        'views/product_template_inherit_view.xml',
+        'views/purchase_order_inherit_view.xml',
+        'views/sale_order_view.xml',
+        'views/purchase_order_line_inherit_view.xml',
+        'views/stock_move_inherit_view.xml',
+        'views/sale_order_line_inherit_view.xml',
+        'views/account_move_inherit_view.xml',
+        'views/jewellery_menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+}
