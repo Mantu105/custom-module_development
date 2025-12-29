@@ -1,0 +1,105 @@
+
+<odoo>
+    <template id="inline_form" name="Moyasar Inline Form">
+        <t t-call="web.layout">
+            <style>
+                .moyasar-inline-form {
+                    max-width: 400px;
+                    margin: 30px auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    background-color: #f9f9f9;
+                    font-family: Arial, sans-serif;
+                }
+                .moyasar-inline-form .form-group { margin-bottom: 15px; }
+                .moyasar-inline-form label { display:block; font-weight:bold; margin-bottom:5px; color:#333; }
+                .moyasar-inline-form input[type="text"], .moyasar-inline-form input[type="tel"] {
+                    width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; font-size:14px;
+                }
+                .card-field-wrapper { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+                .card-field-wrapper input { flex:1; }
+                .card-icons img { width:40px; height:auto; }
+                .card-input { display:flex; gap:10px; }
+                .card-input input { flex:1; }
+                .moyasar-inline-form button {
+                    width:100%; padding:12px; background-color:#4CAF50; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer;
+                    transition: background-color 0.3s;
+                }
+                .moyasar-inline-form button:hover { background-color:#45a049; }
+            </style>
+
+            <div class="moyasar-inline-form">
+                <form id="moyasar-form" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Name on card</label>
+                        <input type="text" id="name" name="name" placeholder="Name on card" required="required"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-number">Card information</label>
+                        <div class="card-field-wrapper">
+                            <input type="tel" inputmode="numeric" id="card-number" name="card_number" placeholder="1234 5678 9101 1121" required="required" />
+                            <div class="card-icons">
+                                <img src="https://www.mada.com.sa/sites/mada/files/inline-images/logo.svg" alt="Mada" />
+                                <img src="https://www.citypng.com/public/uploads/preview/hd-visa-payment-logo-png-7017516947777256ndfrewd52.png" alt="Visa"/>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group card-input">
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required="required"/>
+                        <input type="text" id="cvc" name="cvc" placeholder="CVC" required="required"/>
+                    </div>
+                </form>
+            </div>
+
+            <script>
+                (function () {
+                    const TEST_CARD_NUMBER = '';
+                    const TEST_CVC = '';
+                    const TEST_EXPIRY = '';
+
+                    function formatCardNumber(value) {
+                        const digits = value.replace(/\D/g, '').slice(0, 16);
+                        return digits.replace(/(.{4})/g, '$1 ').trim();
+                    }
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const cardInput = document.getElementById('card-number');
+                        const expiryInput = document.getElementById('expiry');
+                        const cvcInput = document.getElementById('cvc');
+
+                        if (!cardInput || !expiryInput || !cvcInput) return;
+
+                        cardInput.value = formatCardNumber(TEST_CARD_NUMBER);
+                        expiryInput.value = TEST_EXPIRY;
+                        cvcInput.value = TEST_CVC;
+
+                        cardInput.addEventListener('input', function (e) {
+                            const caret = cardInput.selectionStart;
+                            const oldVal = cardInput.value;
+                            const newVal = formatCardNumber(oldVal);
+                            cardInput.value = newVal;
+
+                            let newPos = caret;
+                            if (newVal.length &gt; oldVal.length &amp;&amp; newVal[caret - 1] === ' ') newPos = caret + 1;
+                            if (newVal.length &lt; oldVal.length &amp;&amp; oldVal[caret - 1] === ' ') newPos = caret - 1;
+                            cardInput.setSelectionRange(newPos, newPos);
+                        });
+
+                        expiryInput.addEventListener('input', function () {
+                            let v = expiryInput.value.replace(/[^\d]/g, '').slice(0, 4);
+                            if (v.length &gt;= 3) v = v.slice(0,2) + '/' + v.slice(2);
+                            expiryInput.value = v;
+                        });
+                        cvcInput.addEventListener('input', function () {
+                            cvcInput.value = cvcInput.value.replace(/\D/g, '').slice(0, 3);
+                        });
+                    });
+                })();
+            </script>
+        </t>
+    </template>
+</odoo>
