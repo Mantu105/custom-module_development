@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_tender_bid_list" model="ir.ui.view">
+        <field name="name">Tender Bid</field>
+        <field name="model">tender.bid</field>
+        <field name="arch" type="xml">
+            <list string="Tender Bid">
+                <field name="tender_id"/>
+                <field name="vendor_id"/>
+                <field name="bid_type"/>
+                <field name="qualification_status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tender_bid_form" model="ir.ui.view">
+        <field name="name">Tender Bid</field>
+        <field name="model">tender.bid</field>
+        <field name="arch" type="xml">
+            <form string="Tender Bid">
+                <header>
+                    <field name="qualification_status" widget="statusbar" statusbar_visible="draft,qualified,disqualified"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="tender_id"/>
+                            <field name="bid_type"/>
+                        </group>
+                        <group>
+                            <field name="vendor_id"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Products">
+                                <field name="line_bid_ids" widget="one2many_list">
+                                    <list editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                        <field name="price"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tender_bid_view" model="ir.actions.act_window">
+        <field name="name">Tender Bid</field>
+        <field name="res_model">tender.bid</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_tender_bid_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add Tender Bid.
+            </p>
+        </field>
+    </record>
+</odoo>

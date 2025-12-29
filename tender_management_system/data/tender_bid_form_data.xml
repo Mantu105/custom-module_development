@@ -1,0 +1,125 @@
+<odoo>
+    <template id="tender_bid_form" name="Tender Bid Form">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-header bg-primary text-white py-3 rounded-top-4 text-center">
+                        <h2 class="mb-0">Bid Submission</h2>
+                        <h5>For: <strong><t t-esc="tender.name"/></strong></h5>
+                    </div>
+    
+                    <div class="card-body p-4">
+                        <p class="fs-5">
+                            Hello <span class="fw-bold text-primary"><t t-esc="vendor.name"/></span>,  
+                            please submit your prices below.
+                        </p>
+    
+                        <form action="/tender/bid/submit" method="POST" class="mt-4">
+                            <input type="hidden" name="tender_id" t-att-value="tender.id"/>
+                            <input type="hidden" name="vendor_id" t-att-value="vendor.id"/>
+    
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle text-center">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="text-start">Product</th>
+                                            <th>Quantity</th>
+                                            <th>Your Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="tender.line_ids" t-as="line">
+                                            <tr>
+                                                <td class="text-start fw-semibold">
+                                                    <t t-esc="line.product_id.display_name"/>
+                                                </td>
+                                                <td>
+                                                    <span class="badge bg-info fs-6">
+                                                        <t t-esc="line.quantity"/>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.01" min="0"
+                                                           class="form-control text-center"
+                                                           placeholder="Enter price"
+                                                           t-att-name="'price_%s' % line.id"
+                                                           required="required"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+    
+                            <div class="d-flex justify-content-end mt-4">
+                                <button type="reset" class="btn btn-outline-secondary me-2">
+                                    Reset
+                                </button>
+                                <button type="submit" class="btn btn-primary px-4">
+                                    Submit Bid
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+
+    <template id="thank_you_page" name="Bid Thank You Page">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="card shadow-lg border-0 rounded-4 text-center p-5">
+                    <div class="mb-3">
+                        <i class="fa fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h2 class="text-success fw-bold">Thank You!</h2>
+                    <p class="fs-5 mt-3">
+                        Your bid has been <strong>submitted successfully</strong>.  
+                        We will contact you after the tender closing date.
+                    </p>
+                    <a href="/" class="btn btn-outline-secondary mt-4 px-4">Back to Home</a>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    
+    <template id="tender_bid_already_submitted" name="Tender Bid Already Submitted">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="card shadow-lg border-0 rounded-4 text-center p-5">
+                    <div class="mb-3">
+                        <i class="fa fa-info-circle" style="font-size: 3rem; color:#0731ff;"></i>
+                    </div>
+                    <h2 class="fw-bold" style="color:#0731ff;">Bid Already Submitted</h2>
+                    <p class="fs-5 mt-3">
+                        You have already submitted your bid for this tender.  
+                        Multiple submissions are not allowed.
+                    </p>
+                    <a href="/" class="btn btn-outline-secondary mt-4 px-4">Go Back</a>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    
+    <template id="tender_closed" name="Tender Closed">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="card shadow-lg border-0 rounded-4 text-center p-5">
+                    <div class="mb-3">
+                        <i class="fa fa-lock text-danger" style="font-size: 3rem;"></i>
+                    </div>
+                    <h2 class="text-danger fw-bold">Tender Closed</h2>
+                    <p class="fs-5 mt-3">
+                        This tender is no longer accepting bids.  
+                        Please check back for upcoming opportunities.
+                    </p>
+                    <a href="/" class="btn btn-outline-secondary mt-4 px-4">Back to Home</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

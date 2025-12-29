@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_tender_list" model="ir.ui.view">
+        <field name="name">Tender Tender</field>
+        <field name="model">tender.tender</field>
+        <field name="arch" type="xml">
+            <list string="Tender Tender">
+                <field name="name"/>
+                <field name="vendor_id" widget="many2many_tags"/>
+                <field name="user_id"/>
+                <field name="tender_closing_date"/>
+                <field name="bid_type"/>
+                <field name="minimun_bid_amount"/>
+                <field name="maximum_bid_amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tender_form" model="ir.ui.view">
+        <field name="name">Tender Tender</field>
+        <field name="model">tender.tender</field>
+        <field name="arch" type="xml">
+            <form string="Tender Tender">
+                <field name="active" invisible="1"/>
+                <header>
+                    <button name="action_open" invisible="state != 'draft'" string="Open" type="object" class="btn-primary"/>
+                    <button name="action_cancel" invisible="state not in ('draft', 'open')" string="Cancel" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                name="action_tender_bid"
+                                type="object"
+                                icon="fa-gavel"
+                                invisible="state == 'draft'">
+                                <field name="total_bid_count" widget="statinfo" class="o_stat_value"/>
+                        </button>
+                        <button class="oe_stat_button"
+                                name="action_rfq"
+                                type="object"
+                                icon="fa-credit-card"
+                                invisible="state != 'closed'">
+                                <field name="rfq_count" widget="statinfo" class="o_stat_value"/>
+                        </button>
+                    </div>
+                    <h1 class="o_main_title">
+                        <field name="name"/>
+                    </h1>
+                    <br/>
+                    <group>
+                        <group>
+                            <field name="vendor_id" widget="many2many_tags" readonly="state != 'draft'"/>
+                            <field name="user_id" readonly="state != 'draft'"/>
+                            <field name="bid_type" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="tender_closing_date" readonly="state != 'draft'"/>
+                            <field name="minimun_bid_amount" readonly="state != 'draft'"/>
+                            <field name="maximum_bid_amount" readonly="state != 'draft'"/>
+                            <field name="rfq_created" readonly="1" invisible="1"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Products">
+                                <field name="line_ids" widget="one2many_list" readonly="state != 'draft'">
+                                    <list editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="quantity"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tender_view" model="ir.actions.act_window">
+        <field name="name">Tender Tender</field>
+        <field name="res_model">tender.tender</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_tender_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add Tender Tender.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<odoo>
+    <data noupdate="0">
+
+        <!-- Line Bid Sequence -->
+        <record id="seq_tender_line_bid" model="ir.sequence">
+            <field name="name">Tender Line Bid</field>
+            <field name="code">tender.tender.line</field>
+            <field name="prefix">LB</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Total Bid Sequence -->
+        <record id="seq_tender_total_bid" model="ir.sequence">
+            <field name="name">Tender Total Bid</field>
+            <field name="code">tender.tender.total</field>
+            <field name="prefix">TB</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Total Bid Sequence -->
+        <record id="seq_tender_bid" model="ir.sequence">
+            <field name="name">Tender Bid</field>
+            <field name="code">tender.bid</field>
+            <field name="prefix">BID</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

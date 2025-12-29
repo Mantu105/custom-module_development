@@ -1,0 +1,171 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<odoo>
+
+    <template id="portal_my_home_menu_tender" name="Portal layout : Tender(RFQ) menu" inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <!-- Breadcrumb for tenders list -->
+            <li t-if="tenders and not tender_order" class="breadcrumb-item">
+                Request for Quotation
+            </li>
+
+            <li t-if="tender_order" class="breadcrumb-item">
+                <a href="/my/tender">Request for Quotation</a>
+            </li>
+
+            <!-- Breadcrumb for specific tender ticket -->
+            <li t-if="tender_order" class="breadcrumb-item active" aria-current="page">
+                <t t-esc="tender_order.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="mail_notification_template" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+            <t t-set="portal_vendor_category_enable" t-value="True"/>
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/account/static/src/img/Bill.svg'"/>
+                <t t-set="title">Tender (RFQ)</t>
+                <t t-set="url" t-value="'/my/tender'"/>
+                <t t-set="text">Follow your Requests for Quotation</t>
+                <t t-set="placeholder_count" t-value="'invoice_count'"/>
+            </t>
+        </div>
+    </template>
+
+    <template id="tender_tree_template" name="My Request for Quotation" >
+        <t t-call="portal.portal_layout">
+
+            <t t-if="not tenders">
+                <p class="alert alert-warning">There are currently no tender rfq for your account.</p>
+            </t>
+
+            <t t-if="tenders">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="active">
+                                <th>
+                                    <span class='d-none d-md-inline'>Reference</span>
+                                </th>
+                                <th>
+                                    <span class='d-none d-md-inline'>Vendor</span>
+                                </th>
+                                <th>
+                                    <span class='d-none d-md-inline'>Source Document</span>
+                                </th>
+                                <th>
+                                    <span class='d-none d-md-inline'>Order Deadline</span>
+                                </th>
+                                <th>
+                                    <span class='d-none d-md-inline'>Total</span>
+                                </th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="tenders" t-as="tender">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/my/tender/#{tender.id}">
+                                            <t t-esc="tender.name"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <t t-esc="tender.partner_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="tender.origin"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="tender.date_order"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="tender.amount_total"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-if="tender.state == 'draft'" class="badge rounded-pill text-bg-info">
+                                            <i class="fa fa-fw fa-spinner" role="img" aria-label="Draft" title="In Progress"></i>
+                                            <span class="d-none d-md-inline">Draft</span>
+                                        </span>
+                                        <span t-if="tender.state == 'sent'" class="badge rounded-pill text-bg-success">
+                                            <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Completed"></i>
+                                            <span class="d-none d-md-inline">RFQ Sent</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+        <br/><br/><br/><br/><br/><br/><br/>
+    </template>
+
+    <template id="tender_form_template" name="My Warranty Repairs tender Form">
+        <t t-call="portal.portal_layout">
+
+            <t t-if="tender_order">
+                <div class="container mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Requests for Quotation Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>Vendor:</strong>
+                                        <t t-esc="tender_order.partner_id.name"/>
+                                    </p>
+                                    <p>
+                                        <strong>Reference:</strong>
+                                        <t t-esc="tender_order.name"/>
+                                    </p>
+                                    <p>
+                                        <strong>Source Document:</strong>
+                                        <t t-esc="tender_order.origin"/>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <strong>Order Deadline:</strong>
+                                        <t t-esc="tender_order.date_order" t-options="{'widget': 'date'}"/>
+                                    </p>
+                                    <p>
+                                        <strong>Total:</strong>
+                                        <span t-field="tender_order.amount_total"/>
+                                    </p>
+                                    <p>
+                                        <strong>Status:</strong>
+                                        <span t-if="tender_order.state == 'draft'"
+                                              class="badge rounded-pill text-bg-info">
+                                            <i class="fa fa-fw fa-spinner" role="img" aria-label="Draft"
+                                               title="In Progress"></i>
+                                            <span class="d-none d-md-inline">Draft</span>
+                                        </span>
+                                        <span t-if="tender_order.state == 'sent'"
+                                              class="badge rounded-pill text-bg-success">
+                                            <i class="fa fa-fw fa-check" role="img" aria-label="Done"
+                                               title="Completed"></i>
+                                            <span class="d-none d-md-inline">RFQ Sent</span>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <br/><br/><br/><br/><br/><br/><br/>
+            <t t-if="not tender_order">
+                <p class="alert alert-warning">No details available for this warranty repair tender.</p>
+            </t>
+        </t>
+    </template>
+
+</odoo>

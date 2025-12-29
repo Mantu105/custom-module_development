@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tender_tender,Tender Tender,model_tender_tender,base.group_user,1,1,1,1
+access_tender_line,Tender Line,model_tender_line,base.group_user,1,1,1,1
+access_tender_bid,Tender Bid,model_tender_bid,base.group_user,1,0,0,0
+access_tender_bid_line,Tender Bid Line,model_tender_bid_line,base.group_user,1,0,0,0

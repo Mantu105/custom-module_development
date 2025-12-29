@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_tender_management_system" name="Tender Management System" sequence="1" web_icon="tender_management_system,static/description/icon.png"/>
+
+    <menuitem id="menu_tender" name="Tender" sequence="2"
+        parent="menu_tender_management_system" action="action_tender_view"/>
+
+    <menuitem id="menu_tender_bid" name="Tender Bid" sequence="3" parent="menu_tender_management_system" action="action_tender_bid_view" />
+</odoo>
