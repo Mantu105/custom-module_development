@@ -12,8 +12,7 @@
         "sale",
         "purchase",
     ],
-    "author": "Codetrade.io",
-    "website": "https://www.codetrade.io",
+    "author": "Mantu Raj",
     "description": """
 Tender Management System
 ========================
