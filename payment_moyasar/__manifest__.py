@@ -18,8 +18,7 @@
         - Inline payment form with real-time validation.
         - Automatic transaction creation and synchronization.
         """,
-    'author': "CodeTrade India Pvt. Ltd.",
-    'website': "https://www.codetrade.io",
+    'author': "Mantu Raj",
     'license': "LGPL-3",
 
     # Dependencies
